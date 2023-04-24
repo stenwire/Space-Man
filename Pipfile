@@ -7,6 +7,9 @@ name = "pypi"
 django = "*"
 pygame = "*"
 requests = "*"
+django-storages = "*"
+boto3 = "*"
+python-decouple = "*"
 
 [dev-packages]
 black = "*"
