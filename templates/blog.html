@@ -1,0 +1,79 @@
+{% extends './navbar.html' %}
+{% load static %}
+
+		{% block content %}
+
+		<div id="body">
+			<div class="header">
+				<div>
+					<h1>Blog</h1>
+					<div class="article">
+						{% for post in post_list %}
+						<ul>
+							<li>
+								<a href="{% url 'post_detail' post.slug %}"><img src="{{ post.image }}" alt=""></a>
+								<h1>{{ post.title }}</h1>
+								<span>FEBRUARY 6, 2023</span>
+								<p>{{post.content|slice:":200" }}</p>
+								<a href="{% url 'post_detail' post.slug %}" class="more">Read More</a>
+							</li>
+						</ul>
+						{% endfor %}
+					</div>
+					<div class="sidebar">
+						<ul>
+							<li>
+								<h1>FEATURED POSTS</h1>
+								{% for post in post_list %}
+								<a href="{% url 'post_detail' post.slug %}"><img src="{{ post.image }}" alt=""></a>
+								<h2>{{ post.title }}</h2>
+								<span>FEBRUARY 6, 2023</span>
+								{% endfor %}
+							</li>
+							<li>
+								<h1>RECENT POSTS</h1>
+								<ul>
+									<li>
+										{% for post in post_list %}
+										<a href="{% url 'post_detail' post.slug %}"><img src="{{ post.image }}" alt=""></a>
+										<h2>{{ post.title }}</h2>
+										<span>FEBRUARY 3, 2023</span>
+										{% endfor %}
+									</li>
+									<li>
+										{% for post in post_list %}
+										<a href="{% url 'post_detail' post.slug %}"><img src="{{ post.image }}" alt=""></a>
+										<h2>{{ post.title }}</h2>
+										<span>FEBRUARY 1, 2023</span>
+										{% endfor %}
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="footer">
+			<div class="connect">
+				<div>
+					<h1>FOLLOW OUR  MISSIONS ON</h1>
+					<div>
+						<a href="http://freewebsitetemplates.com/go/facebook/" class="facebook">facebook</a>
+						<a href="http://freewebsitetemplates.com/go/twitter/" class="twitter">twitter</a>
+						<a href="http://freewebsitetemplates.com/go/googleplus/" class="googleplus">googleplus</a>
+						<a href="http://pinterest.com/fwtemplates/" class="pinterest">pinterest</a>
+					</div>
+				</div>
+			</div>
+			<div class="footnote">
+				<div>
+					<p>&copy; 2023 BY SPACEMAN | ALL RIGHTS RESERVED</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% load static %}
+
+<!doctype html>
+<!-- Website template by freewebsitetemplates.com -->
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Space Man</title>
+	<!-- <link rel="stylesheet" href="css/style.css" type="text/css"> -->
+	<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+	<link rel="stylesheet" type="text/css" href="css/mobile.css">
+	<script src="js/mobile.js" type="text/javascript"></script>
+</head>
+<body>
+	<div id="page">
+		<div id="header">
+			<div>
+				<a href="{url 'index'}" class="logo"><img src="{% static 'images/logo.png' %}" alt=""></a>
+				<ul id="navigation">
+					<li>
+						<a href="{% url 'index' %}">Home</a>
+					</li>
+					<li>
+						<a href="{% url 'spacex:info' %}">History</a>
+					</li>
+					<li>
+						<a href="{% url 'spacex:missions' %}">Missions</a>
+					</li>
+					<li>
+						<a href="{% url 'spacex:launches' %}">Launches</a>
+					</li>
+					<li class="menu">
+						<a href="{% url 'blog' %}">Blog</a>
+						<ul class="secondary">
+							<li>
+								<a href="singlepost.html">Single post</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="{% url 'contact' %}">Contact</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+    {% block content %}
+
+    {% endblock %}
+  </body>
