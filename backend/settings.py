@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 from decouple import config
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,7 +28,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -81,12 +82,12 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Password validation
@@ -149,3 +150,13 @@ DEFAULT_FILE_STORAGE = config('DEFAULT_FILE_STORAGE')
 STATICFILES_STORAGE = config('STATICFILES_STORAGE')
 AWS_S3_CUSTOM_DOMAIN = "%s.s3.amazonaws.com" % AWS_STORAGE_BUCKET_NAME
 AWS_S3_FILE_OVERWRITE = False
+
+PROD_DATABASE_URL = config('PROD_DATABASE_URL')
+PROD_USERNAME = config('PROD_USERNAME')
+PROD_PASSWORD = config('PROD_PASSWORD')
+PROD_DATABASE = config('PROD_DATABASE')
+PROD_PSQL_COMMAND = config('PROD_PSQL_COMMAND')
+
+DATABASES = {
+    'default': dj_database_url.parse(PROD_DATABASE_URL)
+}

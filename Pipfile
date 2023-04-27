@@ -10,6 +10,10 @@ requests = "*"
 django-storages = "*"
 boto3 = "*"
 python-decouple = "*"
+psycopg2-binary = "*"
+dj-database-url = "*"
+django-environ = "*"
+gunicorn = "*"
 
 [dev-packages]
 black = "*"
